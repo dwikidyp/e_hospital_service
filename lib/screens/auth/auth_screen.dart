@@ -1,6 +1,6 @@
 import 'package:e_hospital_service/constants/app_colors.dart';
-import 'package:e_hospital_service/screens/login_screen.dart';
-import 'package:e_hospital_service/screens/signup_screen.dart';
+import 'package:e_hospital_service/screens/auth/login_screen.dart';
+import 'package:e_hospital_service/screens/auth/signup_screen.dart';
 import 'package:e_hospital_service/widgets/auth_header.dart';
 import 'package:e_hospital_service/widgets/auth_tab_switcher.dart';
 import 'package:flutter/material.dart';

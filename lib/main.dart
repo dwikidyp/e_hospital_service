@@ -1,5 +1,5 @@
 import 'package:e_hospital_service/constants/app_colors.dart';
-import 'package:e_hospital_service/screens/auth_screen.dart';
+import 'package:e_hospital_service/screens/auth/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
