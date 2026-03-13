@@ -23,9 +23,7 @@ class _AuthScreenState extends State<AuthScreen>
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
-        setState(() {
-          _isLoginSelected = _tabController.index == 0;
-        });
+        setState(() => _isLoginSelected = _tabController.index == 0);
       }
     });
   }
@@ -34,17 +32,6 @@ class _AuthScreenState extends State<AuthScreen>
   void dispose() {
     _tabController.dispose();
     super.dispose();
-  }
-
-  @override
-  void _onLoginTap() {
-    setState(() => _isLoginSelected = true);
-    _tabController.animateTo(0);
-  }
-
-  void _onSignUpTap() {
-    setState(() => _isLoginSelected = false);
-    _tabController.animateTo(1);
   }
 
   @override
@@ -77,8 +64,14 @@ class _AuthScreenState extends State<AuthScreen>
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                     child: AuthTabSwitcher(
                       isLoginSelected: _isLoginSelected,
-                      onLoginTap: _onLoginTap,
-                      onSignUpTap: _onSignUpTap,
+                      onLoginTap: () {
+                        setState(() => _isLoginSelected = true);
+                        _tabController.animateTo(0);
+                      },
+                      onSignUpTap: () {
+                        setState(() => _isLoginSelected = false);
+                        _tabController.animateTo(1);
+                      },
                     ),
                   ),
                   // form section
@@ -86,16 +79,16 @@ class _AuthScreenState extends State<AuthScreen>
                     child: TabBarView(
                       controller: _tabController,
                       physics: const NeverScrollableScrollPhysics(),
-                      children: [
+                      children: const [
                         // Login Form
                         SingleChildScrollView(
-                          padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
-                          child: const LoginScreen(),
+                          padding: EdgeInsets.fromLTRB(24, 20, 24, 24),
+                          child: LoginScreen(),
                         ),
                         // Sign Up Form
                         SingleChildScrollView(
-                          padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
-                          child: const SignUpScreen(),
+                          padding: EdgeInsets.fromLTRB(24, 20, 24, 24),
+                          child: SignUpScreen(),
                         ),
                       ],
                     ),
